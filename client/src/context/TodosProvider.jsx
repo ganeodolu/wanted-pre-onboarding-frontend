@@ -15,7 +15,7 @@ const TodosProvider = ({ children }) => {
 			async add({ todo: text }) {
 				if (text.length === 0) return;
 				const newTodo = await todo.createTodo({ todo: text });
-				setTodos((prevTodos) => [newTodo, ...prevTodos]);
+				setTodos((prevTodos) => [...prevTodos, newTodo]);
 			},
 			async toggle({ selectedId, isCompleted, todo: text }) {
 				await todo.updateTodo({ id: selectedId, isCompleted, todo: text });
