@@ -5,8 +5,8 @@ import TodoList from "../components/TodoList";
 import TodosProvider from "../context/TodosProvider";
 
 const TodoPage = () => {
-  const navigate = useNavigate();
-  
+	const navigate = useNavigate();
+
 	useEffect(() => {
 		const userToken = localStorage.getItem("user");
 		if (!userToken) {

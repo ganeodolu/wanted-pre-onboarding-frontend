@@ -2,7 +2,7 @@ import { createContext, useContext, useMemo, useState } from "react";
 import * as todo from "../lib/api/todo";
 
 const TodosValueContext = createContext(undefined);
-const TodosActionsContext = createContext(undefined); // any 수정필요
+const TodosActionsContext = createContext(undefined);
 
 const TodosProvider = ({ children }) => {
 	const [todos, setTodos] = useState([]);

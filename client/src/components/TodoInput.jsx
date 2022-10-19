@@ -31,7 +31,7 @@ const TodoInput = () => {
 					className="todo-input"
 					placeholder="할일을 입력해주세요"
 				/>
-				<Button onClickButton={handleInputSubmit}>추가</Button>
+				<Button width="550px" onClickButton={handleInputSubmit}>추가</Button>
 			</form>
 		</header>
 	);

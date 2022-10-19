@@ -40,7 +40,7 @@ const Input = (props) => {
 
 Input.defaultProps = {
   type: "text",
-  width: "80%",
+  width: "20vw",
   marginBottom: "20px",
   value: "",
   onChange: () => { },

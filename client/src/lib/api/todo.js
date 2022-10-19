@@ -1,34 +1,41 @@
-import { APIWithAuth } from "./main";
+import API from "./main";
 
 const getTodos = async () => {
 	try {
-		const response = await APIWithAuth.get(`/todos`);
-		return response.data;
-	} catch (error) {
-		console.log(error);
-	}
-};
-const createTodo = async ({
-	todo,
-}) => {
-	try {
-		const response = await APIWithAuth.post("/todos", {
-			todo,
+		const response = await API.get(`/todos`, {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem("user")}`,
+			},
 		});
 		return response.data;
 	} catch (error) {
 		console.log(error);
 	}
 };
-const updateTodo = async ({
-	id,
-	todo,
-	isCompleted
-}) => {
+const createTodo = async ({ todo }) => {
 	try {
-		const response = await APIWithAuth.put(`/todos/${id}`, {
+		const response = await API.post("/todos", {
+				todo,
+			}, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("user")}`,
+				},
+			}
+		);
+		return response.data;
+	} catch (error) {
+		console.log(error);
+	}
+};
+const updateTodo = async ({ id, todo, isCompleted }) => {
+	try {
+		const response = await API.put(`/todos/${id}`, {
 			todo,
-			isCompleted
+			isCompleted, 
+		}, {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem("user")}`,
+			},
 		});
 		return response.data;
 	} catch (error) {
@@ -37,11 +44,15 @@ const updateTodo = async ({
 };
 const deleteTodo = async ({ id }) => {
 	try {
-		const response = await APIWithAuth.delete(`/todos/${id}`);
+		const response = await API.delete(`/todos/${id}`, {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem("user")}`,
+			},
+		});
 		return response.data;
 	} catch (error) {
 		console.log(error);
 	}
 };
 
-export { getTodos, createTodo, updateTodo, deleteTodo}
+export { getTodos, createTodo, updateTodo, deleteTodo };
